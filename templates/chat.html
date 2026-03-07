@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+<title>Titan</title>
+</head>
+<body>
+
+<h1>TITAN AI</h1>
+
+<input id="message" placeholder="Ask Titan something">
+<button onclick="send()">Send</button>
+
+<textarea id="response" class="chatresponse" ></textarea>
+
+<script>
+function send() {
+  let msg = document.getElementById("message").value;
+
+  fetch("/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: "message=" + msg
+  })
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("response").innerText = data;
+  });
+}
+</script>
+
+</body>
+</html>
