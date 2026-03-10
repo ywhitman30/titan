@@ -3,11 +3,13 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 button {
   margin: 10px;
   padding: 6px;
@@ -15,15 +17,33 @@ button {
   padding-right: 15px;
   font-family: "Audiowide", sans-serif;
 }
+
+button:hover {
+  cursor: pointer;
+  scale: 1.125;
+}
+
 h1 {
   font-family: "Audiowide", sans-serif;
   margin-top: 20px;
 }
-.chatresponse {
-  background: #2d66c2;
-  padding: 5px;
-  margin: 20px;
-  resize: none;
+
+#response {
   width: 500px;
   height: 400px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  overflow-y: auto;
+  background-color: #e6e6e69;
+  box-sizing: border-box;
+}
+
+.answer {
+  background-color: #fcba03;
+}
+
+.question {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
 }
