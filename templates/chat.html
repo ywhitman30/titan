@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="../static/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Google+Sans:ital,opsz,wght@0,17">
 <title>Titan</title>
 </head>
 <body>
@@ -18,9 +18,11 @@
 
 <script>
 function send() {
+  console.log("Button has been pressed")
   let msg = document.getElementById("message").value;
 
   fetch("/chat", {
+    console.log("AI response is being fetched")
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -29,7 +31,19 @@ function send() {
   })
   .then(response => response.text())
   .then(data => {
-    document.getElementById("response").innerText = data;
+    const responseDiv = document.getElementById("respons>
+
+    const question = document.createElement("p");
+    console.log("Addin user prompt to <p>")
+    question.innerText = msg + "\n\n\n";
+    question.classList.add("question");
+    responseDiv.appendChild(question);
+
+    const answer = document.createElement("p");
+    console.log("Adding AI response to <p>")
+    answer.innerText = `${data}` + "\n\n";
+    answer.classList.add("answer");
+    responseDiv.appendChild(answer);
   });
 }
 </script>
